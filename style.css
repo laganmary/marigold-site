@@ -54,7 +54,7 @@ h1{font-size:clamp(42px,6vw,78px);margin:10px 0 14px}
 .blob{position:absolute;border-radius:50%;z-index:-1;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
 .b1{width:84%;aspect-ratio:1;background:var(--c1);left:8%;top:50%;transform:translateY(-50%)}
 .b2{width:22%;aspect-ratio:1;background:var(--c2);right:9%;top:4%}
-.b3{width:14%;aspect-ratio:1;background:var(--c3);left:9%;bottom:6%}
+.b3{width:15%;aspect-ratio:1;background:var(--c3);left:1%;bottom:2%}
 .scene:hover .b1{transform:translateY(-50%) scale(1.04)}
 .scene:hover .b2{transform:translate(-10px,8px)}
 .scene:hover .b3{transform:translate(8px,-8px)}
@@ -84,7 +84,7 @@ section{padding:22px 0}
 .card{background:var(--card);border-radius:28px;padding:28px}
 .card .dot{width:48px;height:48px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;color:var(--lime);font-size:22px;margin-bottom:16px}
 .card h3{margin:0 0 8px;font-size:21px;font-weight:800}
-.card p{margin:0;color:var(--muted)}
+.card p{margin:0;color:var(--muted);text-wrap:balance;padding-right:6px}
 
 /* creator */
 .creator{background:var(--card);border-radius:var(--radius);padding:34px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
@@ -110,6 +110,12 @@ footer nav{display:flex;gap:18px}
 .note p{margin:0}
 .contact{display:inline-flex;margin-top:8px}
 
+@media (min-width:861px){
+  .nav{padding:24px 0}
+  .brand{font-size:32px;gap:14px}
+  .brand img{width:50px;height:50px}
+  .nav-links a{font-size:18px;padding:12px 20px}
+}
 @media (max-width:860px){
   .hero,.feature{grid-template-columns:1fr}
   .feature.flip .text{order:0}
