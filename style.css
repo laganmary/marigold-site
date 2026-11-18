@@ -10,6 +10,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Nunito,system-ui,sans-serif;font-weight:600;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:var(--lime);text-decoration:none}
 a:hover{text-decoration:underline}
@@ -43,9 +44,29 @@ h1{font-size:clamp(42px,6vw,78px);margin:10px 0 14px}
 .palette.day{background:#EEECE6}
 .palette img{margin:0 auto;max-width:1060px;width:100%}
 
-/* shots */
-.shot{border-radius:var(--radius);overflow:hidden;background:var(--bg2)}
-.shot img{width:100%;height:auto}
+/* phones floating over palette circles */
+.scene{position:relative;display:flex;justify-content:center;align-items:center;gap:20px;padding:36px 0 56px;isolation:isolate}
+.phone{position:relative;width:min(250px,42%);aspect-ratio:390/844;border:6px solid #2B2B2B;border-radius:40px;overflow:hidden;background:#111;
+  box-shadow:0 28px 60px rgba(0,0,0,.5);transform:translateY(var(--y,0px)) rotate(var(--r,0deg));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.phone img{width:100%;height:100%;object-fit:cover;display:block}
+.scene:hover .phone{transform:translateY(calc(var(--y,0px) - 10px)) rotate(calc(var(--r,0deg) * .5))}
+.blob{position:absolute;border-radius:50%;z-index:-1;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.b1{width:84%;aspect-ratio:1;background:var(--c1);left:8%;top:50%;transform:translateY(-50%)}
+.b2{width:22%;aspect-ratio:1;background:var(--c2);right:9%;top:4%}
+.b3{width:14%;aspect-ratio:1;background:var(--c3);left:9%;bottom:6%}
+.scene:hover .b1{transform:translateY(-50%) scale(1.04)}
+.scene:hover .b2{transform:translate(-10px,8px)}
+.scene:hover .b3{transform:translate(8px,-8px)}
+.scene.single{padding:22px 0 18px}
+.scene.single .phone{width:74%;border-width:5px;border-radius:30px}
+.scene.single .b1{width:92%;left:4%}
+.scene.single .b2{width:30%;right:0;top:2%}
+.scene.single .b3{width:20%;left:0;bottom:4%}
+.palettes{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pal{margin:0}
+.pal figcaption{font-weight:800;font-size:17px;margin-top:4px}
+.row-label{color:var(--muted);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin:22px 0 0}
+@media (prefers-reduced-motion:reduce){.phone,.blob{transition:none}}
 
 /* feature rows */
 section{padding:32px 0}
@@ -94,4 +115,5 @@ footer nav{display:flex;gap:18px}
   .creator{grid-template-columns:1fr;padding:30px}
   .hero{padding-top:24px}
   .nav-links a{padding:8px 10px}
+  .palettes{grid-template-columns:repeat(2,1fr)}
 }
